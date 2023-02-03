@@ -1,0 +1,13 @@
+body
+{
+	background: #555570;
+}
+
+nav a
+{
+	display: block;
+	line-height: 30px;
+	color: white;
+}
+
+a:visited { color: white; }

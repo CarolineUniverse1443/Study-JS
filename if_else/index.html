@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>If Else</title>
+</head>
+<body>
+	<script>
+		let num = prompt('Введите число', 5);
+		// 1
+		if (+num > 8)
+		{
+			console.log('yes');
+		}
+		else
+		{
+			console.log('no');
+		}
+		// 2
+		if (+num <= 3)
+		{
+			console.log('yes');
+		}
+		else
+		{
+			console.log('no');
+		}
+		// 3
+		if (9 > +num  && +num > 3)
+		{
+			console.log('yes');
+		}
+		else
+		{
+			console.log('no');
+		}
+		// 4
+		if (+num > 9 || +num < 3)
+		{
+			console.log('yes');
+		}
+		else
+		{
+			console.log('no');
+		}
+		// 5
+		if(+num > 5)
+		{
+			console.log('more than 5');
+		}
+		else if (+num > 3)
+		{
+			console.log('more than 3');
+		}
+		// 6
+		if (+num % 2 == 0)
+		{
+			console.log(`${+num} is odd`);
+		}
+		else
+		{
+			console.log(`${+num} is even`);
+		}
+		// 7
+		if (num == 'Хай!')
+		{
+			console.log('yes');
+		}
+		else
+		{
+			console.log(num);
+			console.log('no');
+		}
+		// 8
+		if (Number(num))
+		{
+			console.log('yes');
+		}
+		else
+		{
+			console.log('no');
+		}
+		// 9
+		if(num == num**2)
+		{
+			console.log('yes');
+		}
+		else
+		{
+			console.log('no');
+		}
+		// 10
+		if(Number(num) && num % 2 == 0)
+		{
+			console.log('number is odd');
+		}
+		else if (num == 'Привет')
+		{
+			console.log('Привет!');
+		}
+	</script>
+</body>
+</html>
