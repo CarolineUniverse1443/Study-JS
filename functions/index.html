@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<title>Functions</title>
+</head>
+<body>
+	<div class="btn-container">
+		<button onclick="sayHi()">Скажи привет</button>
+		<button onclick="alert(returnNumber(7))">Покажи мне число 7</button>
+		<button onclick="calc('*')">Умножь числа</button>
+		<button onclick="calc('pow')">Возведи в степень</button>
+		<button onclick="config()">Калькулятор</button>
+		<button>Выведи простые числа</button>
+	</div>
+	<script>
+		//1
+		function sayHi()
+		{
+			alert('Привет');
+		}
+
+		//2
+		function returnNumber(num)
+		{
+			return num;
+		}
+
+		//3
+		function multiply(a, b)
+		{
+			if (isNaN(b))
+			{
+				b = 1;
+			}
+			alert(a * b);
+		}
+
+		//4
+		function pow (a, b)
+		{
+			let degree = a;
+			for (let i = 0; i < b-1; ++i)
+			{
+				a *= degree;
+			}
+			alert(a);
+		}
+
+		// 3,4,5
+		function config()
+		{
+			let action = prompt('Enter action (+, -, *, /, pow)');
+			let a = +prompt('Number a');
+			let b = +prompt('Number b');
+			calc(action, a, b);
+		}
+
+		function getNumbers()
+		{
+			let a = +prompt('Number a');
+			let b = +prompt('Number b');
+			return a, b;
+		}
+
+		let arr = getNumbers();
+		console.log(arr);
+
+		function calc(action, a, b)
+		{
+			// let a = +prompt('Number a');
+			// let b = +prompt('Number b');
+			switch (action)
+			{
+				case '+':
+ 					sum(a, b);
+					break;
+				case '-':
+ 					subtract(a, b);
+					break;
+				case '*':
+ 					multiply(a, b);
+					break;
+				case '/':
+ 					division(a, b);
+					break;
+				case 'pow':
+ 					pow(a, b);
+					break;
+				default:
+					alert('Invalid input');
+					break;
+			}
+		}
+
+		function sum(a, b)
+		{
+			if (isNaN(b))
+			{
+				b = 0;
+			}
+			alert(a + b);
+		}
+
+		function subtract(a, b)
+		{
+			if (isNaN(b))
+			{
+				b = 0;
+			}
+			alert(a - b);
+		}
+
+		function division(a, b)
+		{
+			if (isNaN(b))
+			{
+				b = 1;
+			}
+			alert(a / b);
+		}
+	</script>
+</body>
+</html>
