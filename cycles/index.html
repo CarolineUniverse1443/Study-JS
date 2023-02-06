@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../style.css">
+	<title>Cycles</title>
+</head>
+<body>
+	<nav>
+		<a href="twenty1.html" target="_blank">twenty1.html</a>
+		<a href="twenty2.html" target="_blank">twenty2.html</a>
+		<a href="even.html" target="_blank">even.html</a>
+		<a href="triple.html" target="_blank">triple.html</a>
+		<a href="enough.html" target="_blank">enough.html</a>
+		<a href="simple.html" target="_blank">simple.html</a>
+	</nav>
+
+	<script>
+		//6.1
+		let number = '0';
+
+		for (let i = 0; i < 4; i++) {
+			console.log(number);
+			number += '00';
+		}
+
+		// 6.2
+		let n = 5;
+		let s = '', s2 = '0';
+
+		for (let i = 1; i < n; i++)
+		{
+			s += "_";
+		}
+		for (let j = 1; j <= n; j++)
+		{
+			console.log(s+s2);
+			s = s.slice(0, -1);
+			s2+= "00";
+		}
+
+		//7
+		let len = 4;
+		let tabs = '';
+		let str = '1';
+		let count = 2;
+
+		for (let i = 1; i < len; i++)
+		{
+			tabs += "_";
+		}
+		for (let j = 1; j <= len; j++)
+		{
+			console.log(tabs+str);
+			tabs = tabs.slice(0, -1);
+			str+= String(count++) + String(count++);
+		}
+	</script>
+</body>
+</html>

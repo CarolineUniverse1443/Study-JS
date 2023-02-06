@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<title>Simple numbers</title>
+</head>
+<body>
+	<h1>Simple numbers</h1>
+	<div id="div"></div>
+	<script>
+		// 8 - simple numbers
+		let limit = +prompt("Enter limit");
+		for (let i = 2; i < limit; i++)
+		{
+				let flag = true;
+
+				if (i % 2 == 0 && i != 2) continue;
+
+				let len = Math.ceil(Math.sqrt(i));
+				for (let j = 3; j <= len; j+= 2)
+				{
+					if(i % j == 0)
+					{
+						flag = false;
+						break;
+					}
+				}
+				if(flag)
+				{
+					let newSimple = document.createElement('p');
+					newSimple.innerHTML = i;
+					div.append(newSimple);
+					// document.write(i);
+				}
+		}
+	</script>
+</body>
+</html>
