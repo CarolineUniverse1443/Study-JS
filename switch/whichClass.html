@@ -8,20 +8,26 @@
 <body>
 	<script>
 		let studentName = prompt('Как вас зовут?', 'Маша');
-
-		switch (studentName)
+		if (isNaN(studentName))
 		{
-			case 'Маша':
-			case 'Дима':
-			case 'Антон':
-				alert('7а');
-				break;
-			case 'Света':
-			case 'Леша':
-				alert('7б');
-				break;
-			default:
-				alert('Нет данных');
+			switch (studentName)
+			{
+				case 'Маша':
+				case 'Дима':
+				case 'Антон':
+					alert('7а');
+					break;
+				case 'Света':
+				case 'Леша':
+					alert('7б');
+					break;
+				default:
+					alert('Нет данных');
+			}
+		}
+		else
+		{
+			alert('Ошибка ввода');
 		}
 	</script>
 </body>
