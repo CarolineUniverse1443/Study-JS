@@ -10,11 +10,12 @@
 	<div class="btn-container">
 		<button onclick="sayHi()">Скажи привет</button>
 		<button onclick="alert(returnNumber(7))">Покажи мне число 7</button>
-		<button onclick="calc('*')">Умножь числа</button>
-		<button onclick="calc('pow')">Возведи в степень</button>
+		<button onclick="config('*')">Умножь числа</button>
+		<button onclick="config('pow')">Возведи в степень</button>
 		<button onclick="config()">Калькулятор</button>
-		<button>Выведи простые числа</button>
+		<button onclick="showPrimes()">Выведи простые числа</button>
 	</div>
+	<div id="div"></div>
 	<script>
 		//1
 		function sayHi()
@@ -50,28 +51,19 @@
 		}
 
 		// 3,4,5
-		function config()
+		function config(set)
 		{
-			let action = prompt('Enter action (+, -, *, /, pow)');
+			if(!set)
+			{
+				set = prompt('Enter action (+, -, *, /, pow)');
+			}
 			let a = +prompt('Number a');
 			let b = +prompt('Number b');
-			calc(action, a, b);
+			calc(set, a, b);
 		}
-
-		function getNumbers()
-		{
-			let a = +prompt('Number a');
-			let b = +prompt('Number b');
-			return a, b;
-		}
-
-		let arr = getNumbers();
-		console.log(arr);
 
 		function calc(action, a, b)
 		{
-			// let a = +prompt('Number a');
-			// let b = +prompt('Number b');
 			switch (action)
 			{
 				case '+':
@@ -120,6 +112,53 @@
 				b = 1;
 			}
 			alert(a / b);
+		}
+
+		// 6
+		function isPrime(num)
+		{
+			let flag = true;
+
+			if (num % 2 == 0 && num != 2) return false;
+
+			let len = Math.ceil(Math.sqrt(num));
+			for (let i = 3; i <= len; i+= 2)
+			{
+				if(num % i == 0)
+				{
+					flag = false;
+					break;
+				}
+			}
+			return flag;
+		}
+
+		let clear;
+		
+		function showPrimes()
+		{
+
+			if(clear == 1)
+			{
+				let span = document.querySelectorAll('span'); // обращаю внимание на точку
+
+				span.forEach(function(elem){
+				  elem.parentNode.removeChild(elem);
+				});
+				clear = 0;
+			}
+
+			let limit = +prompt("Enter limit");
+			for (let i = 2; i < limit; i++)
+			{
+					if(isPrime(i))
+					{
+						let newSimple = document.createElement('span');
+						newSimple.innerHTML =` ${i} `;
+						div.append(newSimple);
+					}
+			}
+			clear = 1;
 		}
 	</script>
 </body>
