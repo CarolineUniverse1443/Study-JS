@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Strings</title>
+</head>
+<body>
+	<script>
+		function checkSpam(str)
+		{
+			str = str.toLowerCase();
+			if(str.includes("viagra") || str.includes("xxx"))
+				return true;
+			else
+				return false;
+		}
+
+		let str = checkSpam('buy ViAgRA now');
+		alert(str);
+
+		function truncate(str, maxlength)
+		{
+			if (str.length < maxlength)
+		    	return str;
+			str = str.slice(0, maxlength-1) + "…";
+			return str;
+		}
+
+		let comment = truncate("Вот, что мне хотелось бы сказать на эту тему:", 20);
+		alert(comment);
+
+		function extractCurrencyValue(str)
+		{
+			str = +str.slice(1);
+			return str;
+		}
+
+		let price = extractCurrencyValue('$190');
+		alert(price);
+	</script>
+</body>
+</html>

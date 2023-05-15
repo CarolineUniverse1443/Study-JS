@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function camelize(str)
+		{
+		  let arr = str.split('-');
+		  arr = arr.map(function (item, index) {
+		  	if (index == 0) return item;
+		    return item[0].toUpperCase() + item.slice(1);
+		  });
+
+		  str = arr.join('');
+		  return str;
+		}
+
+		let str = camelize("list-style-image");
+		alert(str);
+
+		function filterRange(arr, a, b)
+		{
+			//копирует массив, не ссылаясь на него, исходый массив изменяться не будет
+			let range = arr.slice();
+			range = range.filter(item => item >= a && item <= b );
+			return range;
+		}
+
+		let arr = [5, 3, 8, 1];
+
+		let filtered = filterRange(arr, 1, 4);
+
+		alert( filtered );
+
+		function filterRangeInPlace(arr, a, b)
+		{
+			//в forEach нельзя вручную уменьшить индекс
+			// arr.forEach((item, index) =>
+			// {
+			// 	console.log(`${item} < ${a} = ${item < a}, ${item} > ${b} = ${item > b}`);
+			// 	if(item < a || item > b)
+			// 	{
+			// 		arr.splice(index, 1);
+			// 		index--;
+			// 	}
+			// });
+
+			for(let i = 0; i<arr.length; i++)
+			{
+				console.log(`${arr[i]} < ${a} = ${arr[i] < a}, ${arr[i]} > ${b} = ${arr[i] > b}`);
+				if(arr[i] < a || arr[i] > b)
+				{
+					arr.splice(i, 1);
+					i--;
+				}
+			}
+		}
+
+		let arr = [5, 3, 8, 1, 0];
+		console.log(arr);
+		filterRangeInPlace(arr, 2, 5);
+		console.log(arr);
+		// alert(arr);
+
+		let arr2 = [5, 2, 1, -10, 8];
+		//сортировка по убыванию
+  		arr.sort((a, b) => b - a);
+
+  		let vasya = { name: "Вася", surname: "Пупкин", id: 1 };
+  		let petya = { name: "Петя", surname: "Иванов", id: 2 };
+  		let masha = { name: "Маша", surname: "Петрова", id: 3 };
+
+  		let users = [ vasya, petya, masha ];
+
+  		let usersMapped = users.map(user =>
+  		({
+  		  fullname: user.name+' '+user.surname,
+  		  id: user.id,
+  		}));
+
+  		alert(usersMapped[0].fullname);
+
+  		//сортировка по возрасту элемента массива
+  		function sortByAge(arr)
+  		{
+  		  arr.sort(function(a, b) {
+  		    return a.age - b.age;
+  		  });
+  		}
+	</script>
+</body>
+</html>

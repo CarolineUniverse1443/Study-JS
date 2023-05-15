@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		let styles = ['Джаз', 'Блюз'];
+		styles.push('Рок-н-ролл');//insert item to the end
+		alert(styles.shift());//delete first item
+		let index = Math.ceil((styles.length-1)/2);//middle of array
+		styles[index] = 'Классика';
+		styles.unshift('Рэп', 'Регги');//insert items at the start
+
+		function sumInput()
+		{
+			let num, sum = 0;
+
+			while(!isNaN(+num))
+			{
+				num = prompt('Enter a number');
+				alert(num);
+				sum += num;
+			}
+
+			return sum;
+		}
+
+		let sum = sumInput();
+		alert(sum);
+
+		function sumInput2()
+		{
+
+			let numbers = [];
+
+			while (true)
+			{
+
+				let value = prompt("Введите число", 0);
+
+				// Прекращаем ввод?
+				if (value === "" || value === null || !isFinite(value)) break;
+
+				numbers.push(+value);
+			}
+
+			let sum = 0;
+			for (let number of numbers)
+			{
+			  sum += number;
+			}
+			return sum;
+		}
+
+		alert( sumInput2() );
+
+		//поиск максимальной суммы подмассива
+		function getMaxSubSum(arr) {
+		  let maxSum = 0;
+		  let partialSum = 0;
+
+		  for (let item of arr) { // для каждого элемента массива
+		    partialSum += item; // добавляем значение элемента к partialSum
+		    maxSum = Math.max(maxSum, partialSum); // запоминаем максимум на данный момент
+		    if (partialSum < 0) partialSum = 0; // ноль если отрицательное
+		  }
+
+		  return maxSum;
+		}
+
+		alert( getMaxSubSum([-1, 2, 3, -9]) ); // 5
+	</script>
+</body>
+</html>
