@@ -9,18 +9,18 @@
 	<script>
 		function camelize(str)
 		{
-		  let arr = str.split('-');
-		  arr = arr.map(function (item, index) {
-		  	if (index == 0) return item;
-		    return item[0].toUpperCase() + item.slice(1);
-		  });
+			let arr = str.split('-');
+			arr = arr.map(function (item, index) {
+			if (index == 0) return item;
+			return item[0].toUpperCase() + item.slice(1);
+			});
 
-		  str = arr.join('');
-		  return str;
+			str = arr.join('');
+			return str;
 		}
 
 		let str = camelize("list-style-image");
-		alert(str);
+		// alert(str);
 
 		function filterRange(arr, a, b)
 		{
@@ -34,7 +34,7 @@
 
 		let filtered = filterRange(arr, 1, 4);
 
-		alert( filtered );
+		// alert( filtered );
 
 		function filterRangeInPlace(arr, a, b)
 		{
@@ -60,7 +60,7 @@
 			}
 		}
 
-		let arr = [5, 3, 8, 1, 0];
+		// let arr = [5, 3, 8, 1, 0];
 		console.log(arr);
 		filterRangeInPlace(arr, 2, 5);
 		console.log(arr);
@@ -68,29 +68,76 @@
 
 		let arr2 = [5, 2, 1, -10, 8];
 		//сортировка по убыванию
-  		arr.sort((a, b) => b - a);
+		arr.sort((a, b) => b - a);
 
-  		let vasya = { name: "Вася", surname: "Пупкин", id: 1 };
-  		let petya = { name: "Петя", surname: "Иванов", id: 2 };
-  		let masha = { name: "Маша", surname: "Петрова", id: 3 };
+		// let vasya = { name: "Вася", surname: "Пупкин", id: 1 };
+		// let petya = { name: "Петя", surname: "Иванов", id: 2 };
+		// let masha = { name: "Маша", surname: "Петрова", id: 3 };
 
-  		let users = [ vasya, petya, masha ];
+		// let users = [ vasya, petya, masha ];
 
-  		let usersMapped = users.map(user =>
-  		({
-  		  fullname: user.name+' '+user.surname,
-  		  id: user.id,
-  		}));
+		// let usersMapped = users.map(user =>
+		// ({
+		//   fullname: user.name+' '+user.surname,
+		//   id: user.id,
+		// }));
 
-  		alert(usersMapped[0].fullname);
+		// alert(usersMapped[0].fullname);
 
-  		//сортировка по возрасту элемента массива
-  		function sortByAge(arr)
-  		{
-  		  arr.sort(function(a, b) {
-  		    return a.age - b.age;
-  		  });
-  		}
+		//сортировка по возрасту элемента массива
+		function sortByAge(arr)
+		{
+			arr.sort(function(a, b) {
+			return a.age - b.age;
+			});
+		}
+		let vasya = { name: "Вася", age: 25 };
+		let petya = { name: "Петя", age: 30 };
+		let masha = { name: "Маша", age: 29 };
+
+		let arr4 = [ vasya, petya, masha ];
+
+		function getAverageAge(arr)
+		{
+			return arr.reduce((sum, current) => sum + current.age, 0) / arr.length;
+		}
+
+		alert(getAverageAge(arr4));
+
+		//does not work
+		function unique(arr)
+		{
+			for(let i = 0; i < arr.length-1; i++)
+			{
+				for(let j = i+1; j < arr.length; j++)
+				{
+					if(arr[i] == arr[j])
+					{
+						arr.splice(j, 1);
+						j--;
+					}
+				}
+			}
+			return arr;
+		}
+
+		//solution
+		function unique2(arr)
+		{
+			let result = [];
+
+			for (let str of arr) {
+				if (!result.includes(str)) {
+					result.push(str);
+				}
+			}
+
+			return result;
+		}
+
+		let strings = ["кришна", "кришна", "харе", "харе","харе", "харе", "кришна", "кришна", ":-O"];
+
+		//alert( unique(strings) );
 	</script>
 </body>
 </html>
