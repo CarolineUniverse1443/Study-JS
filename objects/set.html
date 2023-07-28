@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Unique array</title>
+</head>
+<body>
+	<script>
+		//my solution
+		function unique(arr)
+		{
+			let uniqueSet = new Set();
+			arr.forEach(item => uniqueSet.add(item));
+			return [...uniqueSet];
+		}
+
+		function uniqueShort(arr) {
+		  return Array.from(new Set(arr));
+		}
+
+		let values = ["Hare", "Krishna", "Hare", "Krishna",
+		"Krishna", "Krishna", "Hare", "Hare", ":-O"
+		];
+
+		alert( unique(values) );
+
+		//site solution
+		function aclean(arr) {
+			let obj = {};
+
+			for (let i = 0; i < arr.length; i++) {
+				let sorted = arr[i]
+				.toLowerCase()//становится не чувстительным к регистру
+				.split("")// разбиваем слово на буквы
+				.sort()// сортируем
+				.join("");// объединяем снова в строку
+				obj[sorted] = arr[i];
+			}
+
+		  return Object.values(obj);
+		}
+
+		let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+
+		alert( aclean(arr) );
+	</script>
+</body>
+</html>
