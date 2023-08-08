@@ -136,4 +136,5 @@ function clickGame()
     В окне confirm нужно нажимать "Отмена".
     Начнем?
 `);
+	// let coin = 0;
 }
