@@ -1,6 +1,6 @@
 <template>
 	<div class="search-page">
-		<h1>{{ title }}</h1>
+		<h1 class="search-page__title">{{ title }}</h1>
 
 		<div class="search-page__input">
 			<input
@@ -91,21 +91,26 @@ const queryProducts = computed(() =>
 	max-width: 250px;
 	font-size: 14px;
 	margin-bottom: 20px;
+	input
+	{
+		width: 100%;
+		height: 30px;
+		text-indent: 10px;
+		border-radius: 10px;
+		border: none;
+		background-color: rgba(40,40,40, 0.07);
+		color: black;
+		outline: none;
+		transition: all .2s ease;
+
+		&:focus
+		{
+			box-shadow: 2px 2px 5px gray;
+		}
+	}
 }
 
-input
-{
-	width: 100%;
-	height: 30px;
-	text-indent: 10px;
-	border-radius: 10px;
-	border: none;
-	background-color: rgba(40,40,40, 0.07);
-	color: black;
-	outline: none;
-}
-
-h1
+.search-page__title
 {
 	text-align: center;
 }
