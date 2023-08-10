@@ -1,23 +1,16 @@
 <template>
 	<div class="review-form">
 		<form @submit.prevent.stop="submit">
-			<UiInput />
-			<input
-				type="text"
+			<UiInput
 				v-model="review.author"
 				placeholder="Как вас зовут?"
-				class="input__field"
-			>
+			/>
 
-			<textarea
-				type="text"
+			<UiInput
+				type="textarea"
 				v-model="review.text"
-				class="
-					input__field input__field--textarea
-				"
-				placeholder="Расскажите свое мнение"
-			>
-			</textarea>
+				placeholder="Расскажите свое мнение, пожалуйста"
+			/>
 
 			<div class="review-form__rating">
 				<h2 class="review-form__subtitle">Оценка</h2>
