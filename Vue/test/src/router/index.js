@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import SearchView from '../views/SearchView.vue';
-import FormReview from '../views/FormReview.vue';
+import FormView from '../views/FormView.vue';
 
 const routes = [
 	{
@@ -25,7 +25,7 @@ const routes = [
 	{
 		path: '/review',
 		name: 'review',
-		component: FormReview
+		component: FormView
 	}
 ];
 

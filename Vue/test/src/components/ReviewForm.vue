@@ -1,8 +1,7 @@
 <template>
-	<div class="review-page">
-		<h1 class="review-page__title">{{ title }}</h1>
-
+	<div class="review-form">
 		<form @submit.prevent.stop="submit">
+			<UiInput />
 			<input
 				type="text"
 				v-model="review.author"
@@ -20,13 +19,13 @@
 			>
 			</textarea>
 
-			<div class="review-page__rating">
-				<h3 class="review-page__subtitle">Оценка</h3>
-
+			<div class="review-form__rating">
+				<h2 class="review-form__subtitle">Оценка</h2>
+				<UiCheckbox />
 				<div
 					v-for="star in stars"
 					:key="star"
-					class="review-page__star"
+					class="review-form__star"
 				>
 					<input
 						type="checkbox"
@@ -36,63 +35,66 @@
 						:id="star"
 						class="input__checkbox"
 					>
-					<label class="review-page__star-title" :for="star">
+					<label class="review-form__star-title" :for="star">
 						{{ star }}
 					</label>
 				</div>
 			</div>
 
-			<div class="review-page__file">
-				<label for="formFile" class="review-page__file-label">Фото</label>
+			<div class="review-form__file">
+				<label for="formFile" class="review-form__file-label">Фото</label>
 
-				<div class="review-page__file-wr">
+				<div class="review-form__file-wr">
+					<UiFileInput />
 					<input
 						type="file"
 						id="formFile"
-						class="review-page__file-input"
+						class="review-form__file-input"
 						@change="uploadFile"
 					>
 
 					<img
 						:src="previewFilePath"
 						v-if="previewFilePath !== '#'"
-						class="review-page__file-preview"
+						class="review-form__file-preview"
 					>
 				</div>
 			</div>
 
-			<div class="review-page__rec">
-				<div class="review-page__radio">
+			<div class="review-form__rec">
+				<UiRadio />
+				<div class="review-form__radio">
 					<input
 						v-model="review.isRecommended"
 						:value="false"
-						class="review-page__radio-input"
+						class="review-form__radio-input"
 						type="radio"
 						id="notrecommended"
 						name="opinion"
 					>
-					<label class="review-page__radio-label" for="notrecommended">
+					<label class="review-form__radio-label" for="notrecommended">
 						Не советую
 					</label>
 				</div>
-				<div class="review-page__radio">
+				<div class="review-form__radio">
 					<input
 						v-model="review.isRecommended"
 						:value="true"
-						class="review-page__radio-input"
+						class="review-form__radio-input"
 						type="radio"
 						id="recommmended"
 						name="opinion"
 					>
-					<label class="review-page__radio-label" for="recommmended">
+					<label class="review-form__radio-label" for="recommmended">
 						Советую
 					</label>
 				</div>
 			</div>
 
-			<button class="button button--blue">
-				Отправить
-			</button>
+			<UiButton isBlue>
+				Отправить!
+			</UiButton>
+
 		</form>
 	</div>
 </template>
@@ -100,8 +102,6 @@
 <script setup>
 import { reactive, ref, computed } from 'vue';
 import axios from 'axios';
-
-const title = 'Оставить отзыв';
 
 const review = reactive({
 	author: '',
@@ -129,7 +129,7 @@ const uploadFile = (e) =>
 
 const submit = () =>
 {
-	alert('submit');
+	console.log('submit');
 	axios.post('/api/review', review,
 		{
 			headers:
@@ -154,22 +154,7 @@ const submit = () =>
 </script>
 
 <style lang="scss">
-.review-page
-{
-	text-align: left;
-	padding: 20px;
-	font-family: Arial;
-	margin: 0 auto;
-	max-width: 768px;
-}
-
-.review-page__title
-{
-	font-family: Avenir, Helvetica, Arial, sans-serif;
-	text-align: center;
-}
-
-.review-page__subtitle
+.review-form__subtitle
 {
 	margin: 0;
 	margin-bottom: 10px;
@@ -205,12 +190,12 @@ const submit = () =>
 	}
 }
 
-.review-page__rating
+.review-form__rating
 {
 	margin-bottom: 20px;
 }
 
-.review-page__star
+.review-form__star
 {
 	display: flex;
 	align-items: center;
@@ -220,7 +205,7 @@ const submit = () =>
 	}
 }
 
-.review-page__star-title
+.review-form__star-title
 {
 	font-size: 16px;
 	line-height: 22px;
@@ -232,29 +217,29 @@ const submit = () =>
 	margin-right: 5px;
 }
 
-.review-page__file
+.review-form__file
 {
 	margin-bottom: 20px;
 }
 
-.review-page__file-label
+.review-form__file-label
 {
 	margin-bottom: 5px;
 	display: block;
 }
 
-.review-page__file-wr
+.review-form__file-wr
 {
 	display: flex;
 	flex-direction: column;
 }
 
-.review-page__file-input
+.review-form__file-input
 {
 	margin-bottom: 10px;
 }
 
-.review-page__file-preview
+.review-form__file-preview
 {
 	width: 100%;
 	max-width: 384px;
@@ -262,37 +247,8 @@ const submit = () =>
 	display: block;
 }
 
-.review-page__rec
+.review-form__rec
 {
 	margin-bottom: 30px;
-}
-
-.button
-{
-	white-space: nowrap;
-	cursor: pointer;
-	font-size: 18px;
-	line-height: 22px;
-
-	&:focus { outline: unset; }
-
-	&--blue
-	{
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		padding: 0 30px;
-		height: 38px;
-		width: 100%;
-		width: fit-content;
-		background: #3772FE;
-		border-radius: 10px;
-		border: unset;
-		color: #fff;
-		transition: all .2s ease;
-
-		&:hover { opacity: .8; }
-		&:active { transform: scale(0.95); }
-	}
 }
 </style>
