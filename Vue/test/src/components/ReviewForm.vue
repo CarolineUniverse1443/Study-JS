@@ -34,7 +34,9 @@
 				</div>
 			</div>
 
-			<div class="review-form__file">
+			<UiFileInput />
+
+			<!-- <div class="review-form__file">
 				<label for="formFile" class="review-form__file-label">Фото</label>
 
 				<div class="review-form__file-wr">
@@ -52,7 +54,7 @@
 						class="review-form__file-preview"
 					>
 				</div>
-			</div>
+			</div> -->
 
 			<div class="review-form__rec">
 				<UiRadio />
@@ -106,20 +108,6 @@ const review = reactive({
 
 const stars = [1, 2, 3, 4, 5];
 
-const previewFilePath = computed(() =>
-{
-	if (review.photo)
-		return URL.createObjectURL(review.photo);
-
-	return '#';
-});
-
-const uploadFile = (e) =>
-{
-	console.log(e.target.files[0]);
-	review.photo = e.target.files[0];
-};
-
 const submit = () =>
 {
 	console.log('submit');
@@ -153,36 +141,6 @@ const submit = () =>
 	margin-bottom: 10px;
 }
 
-.input__field
-{
-	font-family: Arial;
-	width: calc(100% - 20px);
-	max-height: 30px;
-	border-radius: 10px;
-	margin-bottom: 10px;
-	padding: 10px;
-	font-size: 14px;
-	line-height: 19px;
-	border: none;
-	background-color: rgba(40,40,40, 0.07);
-	color: black;
-	outline: none;
-	transition: all .2s ease;
-
-	&:focus
-	{
-		box-shadow: 2px 2px 5px gray;
-	}
-
-	&--textarea
-	{
-		resize: none;
-		min-height: 90px;
-		display: block;
-		margin-bottom: 20px;
-	}
-}
-
 .review-form__rating
 {
 	margin-bottom: 20px;
@@ -208,36 +166,6 @@ const submit = () =>
 {
 	margin: 0;
 	margin-right: 5px;
-}
-
-.review-form__file
-{
-	margin-bottom: 20px;
-}
-
-.review-form__file-label
-{
-	margin-bottom: 5px;
-	display: block;
-}
-
-.review-form__file-wr
-{
-	display: flex;
-	flex-direction: column;
-}
-
-.review-form__file-input
-{
-	margin-bottom: 10px;
-}
-
-.review-form__file-preview
-{
-	width: 100%;
-	max-width: 384px;
-	object-fit: cover;
-	display: block;
 }
 
 .review-form__rec
