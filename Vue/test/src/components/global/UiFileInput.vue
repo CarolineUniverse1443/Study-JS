@@ -1,6 +1,6 @@
 <template>
 	<div class="ui-file-input">
-		<label for="formFile" class="ui-file-input__label">Фоточка</label>
+		<label for="formFile" class="ui-file-input__label">{{ label }}</label>
 
 		<div class="ui-file-input__wr">
 			<input
@@ -20,20 +20,35 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed, defineProps, defineEmits, watch, ref } from 'vue';
+
+const emits = defineEmits(['update:modelValue']);
+
+const props = defineProps({
+	modelValue: Array,
+	label: String,
+});
+
+const value = ref(props.modelValue);
+
 const previewFilePath = computed(() =>
 {
-	// if (review.photo)
-	// 	return URL.createObjectURL(review.photo);
+	if (value.value)
+		return URL.createObjectURL(value.value);
 
 	return '#';
 });
 
 const uploadFile = (e) =>
 {
-	console.log(e.target.files[0]);
-	// review.photo = e.target.files[0];
+	const [file] = e.target.files;
+	value.value = file;
 };
+
+watch(value, () =>
+{
+	emits('update:modelValue', value.value);
+});
 </script>
 
 <style lang="scss">

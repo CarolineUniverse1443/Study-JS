@@ -34,7 +34,10 @@
 				</div>
 			</div>
 
-			<UiFileInput />
+			<UiFileInput
+				v-model="review.photo"
+				label="Фоточка"
+			/>
 
 			<!-- <div class="review-form__file">
 				<label for="formFile" class="review-form__file-label">Фото</label>
