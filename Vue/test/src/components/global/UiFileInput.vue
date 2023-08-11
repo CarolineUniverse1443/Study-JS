@@ -47,7 +47,7 @@ const uploadFile = (e) =>
 
 watch(value, () =>
 {
-	emits('update:modelValue', value.value);
+	emits('update:modelValue', value);
 });
 </script>
 
@@ -69,7 +69,7 @@ watch(value, () =>
 	flex-direction: column;
 }
 
-.ui-file-input__input
+.ui-file-input__field
 {
 	margin-bottom: 10px;
 }

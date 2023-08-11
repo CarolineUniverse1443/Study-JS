@@ -39,29 +39,24 @@
 				label="Фоточка"
 			/>
 
-			<!-- <div class="review-form__file">
-				<label for="formFile" class="review-form__file-label">Фото</label>
-
-				<div class="review-form__file-wr">
-					<UiFileInput />
-					<input
-						type="file"
-						id="formFile"
-						class="review-form__file-input"
-						@change="uploadFile"
-					>
-
-					<img
-						:src="previewFilePath"
-						v-if="previewFilePath !== '#'"
-						class="review-form__file-preview"
-					>
-				</div>
-			</div> -->
-
 			<div class="review-form__rec">
-				<UiRadio />
-				<div class="review-form__radio">
+				<UiRadio
+					v-model="review.isRecommended"
+					name="opinion"
+					code="false"
+				>
+					Не советую
+				</UiRadio>
+
+				<UiRadio
+					v-model="review.isRecommended"
+					name="opinion"
+					code="true"
+				>
+					Советую
+				</UiRadio>
+
+				<!-- <div class="review-form__radio">
 					<input
 						v-model="review.isRecommended"
 						:value="false"
@@ -73,8 +68,8 @@
 					<label class="review-form__radio-label" for="notrecommended">
 						Не советую
 					</label>
-				</div>
-				<div class="review-form__radio">
+				</div> -->
+				<!-- <div class="review-form__radio">
 					<input
 						v-model="review.isRecommended"
 						:value="true"
@@ -86,7 +81,7 @@
 					<label class="review-form__radio-label" for="recommmended">
 						Советую
 					</label>
-				</div>
+				</div> -->
 			</div>
 
 			<UiButton isBlue>
@@ -106,7 +101,7 @@ const review = reactive({
 	stars: null,
 	text: '',
 	photo: null,
-	isRecommended: true
+	isRecommended: 'true',
 });
 
 const stars = [1, 2, 3, 4, 5];
