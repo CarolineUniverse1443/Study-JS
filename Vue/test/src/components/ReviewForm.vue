@@ -14,7 +14,6 @@
 
 			<div class="review-form__rating">
 				<h2 class="review-form__subtitle">Оценка</h2>
-				<UiCheckbox />
 				<div
 					v-for="star in stars"
 					:key="star"
@@ -55,34 +54,14 @@
 				>
 					Советую
 				</UiRadio>
-
-				<!-- <div class="review-form__radio">
-					<input
-						v-model="review.isRecommended"
-						:value="false"
-						class="review-form__radio-input"
-						type="radio"
-						id="notrecommended"
-						name="opinion"
-					>
-					<label class="review-form__radio-label" for="notrecommended">
-						Не советую
-					</label>
-				</div> -->
-				<!-- <div class="review-form__radio">
-					<input
-						v-model="review.isRecommended"
-						:value="true"
-						class="review-form__radio-input"
-						type="radio"
-						id="recommmended"
-						name="opinion"
-					>
-					<label class="review-form__radio-label" for="recommmended">
-						Советую
-					</label>
-				</div> -->
 			</div>
+
+			<UiCheckbox
+				v-model="review.soul"
+				name="rate"
+			>
+				Согласен продать дущу
+			</UiCheckbox>
 
 			<UiButton isBlue>
 				Отправить!
@@ -99,6 +78,7 @@ import axios from 'axios';
 const review = reactive({
 	author: '',
 	stars: null,
+	soul: false,
 	text: '',
 	photo: null,
 	isRecommended: 'true',
@@ -168,6 +148,6 @@ const submit = () =>
 
 .review-form__rec
 {
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 }
 </style>
