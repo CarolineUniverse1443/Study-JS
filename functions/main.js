@@ -48,19 +48,19 @@ function calc(action, a, b)
 	switch (action)
 	{
 		case '+':
-				sum(a, b);
+			sum(a, b);
 			break;
 		case '-':
-				subtract(a, b);
+			subtract(a, b);
 			break;
 		case '*':
-				multiply(a, b);
+			multiply(a, b);
 			break;
 		case '/':
-				division(a, b);
+			division(a, b);
 			break;
 		case 'pow':
-				pow(a, b);
+			pow(a, b);
 			break;
 		default:
 			alert('Invalid input');
@@ -123,8 +123,9 @@ function showPrimes()
 	{
 		let span = document.querySelectorAll('span'); // обращаю внимание на точку
 
-		span.forEach(function(elem){
-		  elem.parentNode.removeChild(elem);
+		span.forEach(function(elem)
+		{
+			elem.parentNode.removeChild(elem);
 		});
 		clear = 0;
 	}
@@ -132,12 +133,12 @@ function showPrimes()
 	let limit = +prompt("Enter limit");
 	for (let i = 2; i < limit; i++)
 	{
-			if(isPrime(i))
-			{
-				let newSimple = document.createElement('span');
-				newSimple.innerHTML =` ${i} `;
-				div.append(newSimple);
-			}
+		if(isPrime(i))
+		{
+			let newSimple = document.createElement('span');
+			newSimple.innerHTML =` ${i} `;
+			div.append(newSimple);
+		}
 	}
 	clear = 1;
 }
